@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "build",
     "site": "ce-vin-ci-quizz",
     "ignore": [
       "firebase.json",
