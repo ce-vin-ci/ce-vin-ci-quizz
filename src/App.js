@@ -19,7 +19,9 @@ class App extends React.Component {
   };
 
   render() {
+    /* eslint-disable no-unused-vars */
     const { error, restaurant } = this.state;
+    /* eslint-enable no-unused-vars */
 
     // Print errors if any
     if (error) {
