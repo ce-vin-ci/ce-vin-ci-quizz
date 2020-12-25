@@ -4,15 +4,15 @@ import axios from 'axios';
 class App extends React.Component {
   // State of your application
   state = {
-    restaurants: [],
+    questions: [],
     error: null,
   };
 
-  // Fetch your restaurants immediately after the component is mounted
+  // Fetch your questions immediately after the component is mounted
   componentDidMount = async () => {
     try {
-      const response = await axios.get('https://ce-vin-ci-cms.herokuapp.com/restaurants');
-      this.setState({ restaurants: response.data });
+      const response = await axios.get('https://ce-vin-ci-cms.herokuapp.com/questions');
+      this.setState({ questions: response.data });
     } catch (error) {
       this.setState({ error });
     }
@@ -20,7 +20,7 @@ class App extends React.Component {
 
   render() {
     /* eslint-disable no-unused-vars */
-    const { error, restaurant } = this.state;
+    const { error, question } = this.state;
     /* eslint-enable no-unused-vars */
 
     // Print errors if any
@@ -31,8 +31,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <ul>
-          {this.state.restaurants.map(restaurant => (
-            <li key={restaurant.id}>{restaurant.name}</li>
+          {this.state.questions.map(question => (
+            <li key={question.id}>{question.Question}</li>
           ))}
         </ul>
       </div>
