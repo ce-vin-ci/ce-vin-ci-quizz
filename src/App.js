@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Questions from './components/Questions';
 import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
