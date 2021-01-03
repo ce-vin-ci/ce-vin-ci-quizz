@@ -3,8 +3,10 @@ import Questions from './components/Questions';
 import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+const endPoint = process.env.CMS_GRAPHQL_ENDPOINT || 'http://localhost:1337/graphql'
+
 const client = new ApolloClient({
-  uri: process.env.CMS_GRAPHQL_ENDPOINT,
+  uri: endPoint,
   cache: new InMemoryCache()
 });
 
