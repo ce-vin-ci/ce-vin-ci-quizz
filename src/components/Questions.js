@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { gql, useQuery } from '@apollo/client';
 
 const QUESTIONS = gql`
@@ -16,19 +18,38 @@ const QUESTIONS = gql`
   }
 `;
 
-function Questions() {
-  const { loading, error, data } = useQuery(QUESTIONS);
+function Questions(props) {
 
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  const [questions, setQuestions] = useState([])
+
+  const { loading, error, data } = useQuery(QUESTIONS)
+
+  useEffect(() => {
+    if(data){
+        console.log(data)
+        setQuestions(data.questions)
+    }
+  }, [data])
+
+  if (loading) return 'Loading...'
+  if (error) return `Error! ${error.message}`
 
   return (
-    <ul>
-      {data.questions.map(question => (
-        <li key={question.id}>{question.title}</li>
-      ))}
-    </ul>
+    <React.Fragment>
+      <h1>Score: {props.score}</h1>
+      <ul>
+        {questions.map(question => (
+          <li key={question.id}>{question.title}</li>
+        ))}
+      </ul>
+    </React.Fragment>
   );
 }
 
-export default Questions
+const mapStateToProps = state => {
+  return {
+    score: state.score
+  };
+};
+
+export default connect(mapStateToProps)(Questions);

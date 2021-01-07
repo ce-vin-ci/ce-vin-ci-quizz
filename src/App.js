@@ -11,11 +11,6 @@ const client = new ApolloClient({
 });
 
 class App extends React.Component {
-  // State of your application
-  state = {
-    questions: [],
-    error: null,
-  };
 
   render() {
 
