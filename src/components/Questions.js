@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { gql, useQuery } from '@apollo/client';
+import Question from './Question'
 
 const QUESTIONS = gql`
   query Questions {
@@ -11,14 +11,15 @@ const QUESTIONS = gql`
         value
       }
       answers {
+        id
         answer
-        Correct
+        isCorrect
       }
     }
   }
 `;
 
-function Questions(props) {
+function Questions() {
 
   const [questions, setQuestions] = useState([])
 
@@ -36,20 +37,13 @@ function Questions(props) {
 
   return (
     <React.Fragment>
-      <h1>Score: {props.score}</h1>
       <ul>
         {questions.map(question => (
-          <li key={question.id}>{question.title}</li>
+          <Question question={question} />
         ))}
       </ul>
     </React.Fragment>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    score: state.score
-  };
-};
-
-export default connect(mapStateToProps)(Questions);
+export default Questions;
