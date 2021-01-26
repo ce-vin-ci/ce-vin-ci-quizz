@@ -14,9 +14,9 @@ jobs:
       - name: install
         run: npm install
       - name: build
-        run: |
-          export CMS_GRAPHQL_ENDPOINT=https://ce-vin-ci-cms.herokuapp.com/graphql
-          npm run build
+        run: npm run build
+        env:
+          CMS_GRAPHQL_ENDPOINT: ${{ secrets.CMS_GRAPHQL_ENDPOINT }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
