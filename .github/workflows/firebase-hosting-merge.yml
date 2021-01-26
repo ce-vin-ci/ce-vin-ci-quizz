@@ -11,15 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
-      - name: debug
-        run: "echo CMS_GRAPHQL_ENDPOINT=$CMS_GRAPHQL_ENDPOINT"
-        env:
-          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
+      - name: install
+        run: npm install
       - name: build
-        run: npm run build
-        env:
-          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
+        run: |
+          export CMS_GRAPHQL_ENDPOINT=https://ce-vin-ci-cms.herokuapp.com/graphql
+          npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
