@@ -16,7 +16,7 @@ jobs:
       - name: build
         run: npm run build
         env:
-          CMS_GRAPHQL_ENDPOINT: ${{ secrets.CMS_GRAPHQL_ENDPOINT }}
+          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -25,3 +25,4 @@ jobs:
           projectId: ce-vin-ci
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
