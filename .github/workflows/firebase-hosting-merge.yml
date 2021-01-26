@@ -15,11 +15,11 @@ jobs:
       - name: debug
         run: "echo CMS_GRAPHQL_ENDPOINT=$CMS_GRAPHQL_ENDPOINT"
         env:
-          CMS_GRAPHQL_ENDPOINT: https://ce-vin-ci-cms.herokuapp.com/graphql
+          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
       - name: build
         run: npm run build
         env:
-          CMS_GRAPHQL_ENDPOINT: https://ce-vin-ci-cms.herokuapp.com/graphql
+          CMS_GRAPHQL_ENDPOINT: 'https://ce-vin-ci-cms.herokuapp.com/graphql'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
