@@ -3,7 +3,7 @@ import Questions from './components/Questions';
 import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const endPoint = process.env.CMS_GRAPHQL_ENDPOINT /*|| 'http://localhost:1337/graphql'*/
+const endPoint = process.env.CMS_GRAPHQL_ENDPOINT || 'https://ce-vin-ci-cms.herokuapp.com/graphql'
 
 const client = new ApolloClient({
   uri: endPoint,

@@ -17,4 +17,3 @@ jobs:
           projectId: ce-vin-ci
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
-          CMS_GRAPHQL_ENDPOINT: https://ce-vin-ci-cms.herokuapp.com/graphql
